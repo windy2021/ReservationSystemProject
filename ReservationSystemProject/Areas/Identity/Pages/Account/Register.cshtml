@@ -1,0 +1,49 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register New Account";
+}
+
+<div class="views">
+    <div class="content-container container-center">
+        <div class="reg-center border rounded mt-3 col-5 h-75">
+            <div class="mx-5 mt-3">
+                <h1 class="text-center my-4 ps-3">Register Account</h1>
+                <form asp-route-returnUrl="" method="post" class="row g-3">
+                    <div class="form-group col-12">
+                        <label asp-for="Input.FullName"></label>
+                        <input asp-for="Input.FullName" class="form-control" />
+                        <span asp-validation-for="Input.FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="Input.MobileNumber"></label>
+                        <input asp-for="Input.MobileNumber" class="form-control" />
+                        <span asp-validation-for="Input.MobileNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12 d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-primary col-5">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

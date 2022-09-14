@@ -1,0 +1,94 @@
+﻿@model ReservationSystemProject.Areas.Admin.Models.Reservation.Create
+
+@{
+    ViewData["Title"] = "Create Reservation";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2">Create Reservation</h1>
+
+    <div class="table-container border rounded mt-3">
+        <form asp-action="Create" class="row g-3 m-2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group col-6">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" id="datepicker" class="form-control" placeholder="Click to select date" readonly />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Start" class="control-label"></label>
+                <input asp-for="Start" id="timepicker" class="form-control" placeholder="Click to select time" />
+                <span asp-validation-for="Start" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Guests" class="control-label"></label>
+                <input asp-for="Guests" class="form-control" />
+                <span asp-validation-for="Guests" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="TableId" class="control-label">Table</label>
+                <select asp-for="TableId" asp-items="Model.Tables" class="form-control">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="TableId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="ReservationTypeId" class="control-label">Reservation Type</label>
+                <select asp-for="ReservationTypeId" asp-items="Model.ReservationTypes" class="form-control">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="ReservationTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="ReservationStatusId" class="control-label">Reservation Status</label>
+                <select asp-for="ReservationStatusId" asp-items="Model.ReservationStatuses" class="form-control">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="ReservationStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-12">
+                <label asp-for="Note" class="control-label"></label>
+                <textarea asp-for="Note" class="form-control"></textarea>
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group col-12 d-flex justify-content-center">
+                <input type="submit" value="Create" class="btn btn-primary col-3 align-self-center me-1" />
+                <a asp-action="Index" class="btn btn-primary col-3 align-self-center ms-1">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Styles {
+    <link href="~/lib/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jquery-timepicker/jquery.timepicker.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/lib/jquery-timepicker/jquery.timepicker.min.js"></script>
+    <script src="~/js/Admin/Reservation/Create.js"></script>
+}

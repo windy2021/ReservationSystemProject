@@ -1,0 +1,78 @@
+﻿@model ReservationSystemProject.Areas.Admin.Models.Reservation.Index
+@{
+    ViewData["Title"] = "Reservations";
+}
+<div class="views">
+    <h1 class="mt-3 mb-2">Reservations</h1>
+    <div class="d-flex justify-content-between mt-3 mb-2">
+        <form method="post">
+            <div class="btn-group">
+                <select asp-for="Date" asp-items="Model.Dates" class="form-control">
+                    <option value="">Any Date</option>
+                </select>
+                @if (Model.Dates.SelectedValue != null)
+                {
+                    <select asp-for="SittingId" asp-items="Model.Sittings" class="form-control">
+                        <option value="">Any Sitting</option>
+                    </select>
+                    <select asp-for="ReservationStatusId" asp-items="Model.ReservationStatuses" class="form-control">
+                        <option value="">Any Status</option>
+                    </select>
+                }
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+        <a class="btn btn-primary col-2 align-self-center" asp-action="Create">New Reservation</a>
+    </div>
+
+
+    <div class="overflow-auto table-container border rounded mt-3">
+        <table class="table table-striped">
+            <thead class="table-header-color">
+                <tr>
+                    <th class="text-light">Name</th>
+                    <th class="text-light">Guests</th>
+                    <th class="text-light">Start</th>
+                    <th class="text-light">End</th>
+                    <th class="text-light">Duration</th>
+                    <th class="text-light">Reservation Status</th>
+                    <th class="text-light">Sitting</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            @if (Model.Reservations != null)
+            {
+                <tbody>
+                    @foreach (var item in Model.Reservations)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Person.FullName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Guests)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Start)</td>
+                        <td>@Html.DisplayFor(modelItem => item.End)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Duration)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ReservationStatus.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Sitting.Name)</td>
+                        <td class="pe-0">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                        </td>
+                        <td class="ps-0">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+
+@if (Model.Reservations == null)
+{
+    <p class="text-center"><b>No Reservations</b></p>
+}

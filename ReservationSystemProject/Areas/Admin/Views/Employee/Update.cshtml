@@ -1,0 +1,51 @@
+﻿@model ReservationSystemProject.Areas.Admin.Models.Employee.Update
+
+@{
+    ViewData["Title"] = "Update Employee";
+}
+
+
+<div class="views">
+    <h1 class="mt-3 mb-2 ">Update Details</h1>
+    <div class="table-container rounded col-4">
+
+        <form asp-action="Update" class="row g-3 m-2">
+
+            <div class="form-group col-12">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-12">
+                <label asp-for="MobileNumber" class="control-label"></label>
+                <input asp-for="MobileNumber" class="form-control"/>
+                <span asp-validation-for="MobileNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-12">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-12">
+                <label class="control-label">Role</label>
+                <select asp-for="Role" asp-items="Model.Roles" class="form-control">
+                    <option value="">-- select role --</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group col-12 d-flex justify-content-center">
+                <input type="submit" value="Update" class="btn btn-primary col-4 align-self-center me-1" />
+                <a asp-action="Index" class="btn btn-primary col-4 align-self-center ms-1">Back to List</a>
+            </div>
+
+            <input type="hidden" asp-for="Id" />
+
+        </form>
+
+    </div>
+</div>

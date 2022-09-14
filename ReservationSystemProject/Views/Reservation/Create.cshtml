@@ -1,0 +1,123 @@
+﻿@using Newtonsoft.Json
+@model ReservationSystemProject.Models.Reservation.Create
+@{
+    ViewData["Title"] = "Make Your Reservation";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2">Make Your Reservation</h1>
+
+    <div class="table-container border rounded mt-3">
+        <form asp-action="Create" class="row g-3 m-2">
+            <div class="form-group col-12">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="MobileNumber" class="control-label"></label>
+                <input asp-for="MobileNumber" class="form-control" />
+                <span asp-validation-for="MobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+    @*using datepicker jquery*@
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input type="text" name="date" id="date" class="form-control" readonly asp-for="Date" value="@DateTime.Now.ToShortDateString()">
+        <span asp-validation-for="Date" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+
+            <div class="form-group col-6">
+                <label asp-for="Time" class="control-label"></label>
+                <select asp-for="Time" type="text" name="time" id="time" class="form-control">
+                    <option value="">-- Select Time --</option>
+                </select>
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-6">
+                <label asp-for="Guests" class="control-label"></label>
+                <input asp-for="Guests" class="form-control" />
+                <span asp-validation-for="Guests" class="text-danger"></span>
+            </div>
+            <div class="form-group col-12">
+                <label asp-for="Notes" class="control-label"></label>
+                <textarea asp-for="Notes" class="form-control"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Create" class="btn btn-primary col-2 align-self-center" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    @section Styles{
+        <link href="~/lib/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    }
+    @section Scripts{
+        <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+        <script>
+            var listDates = @Html.Raw(JsonConvert.SerializeObject(ViewData["Dates"]));
+
+            var newArray = listDates.map(d => changeDateFormat(d));
+
+            function changeDateFormat(s) {
+                console.log("this is s" + s);
+                var d = new Date(s);
+                var yy = d.getFullYear();
+                var mm = d.getMonth() + 1;
+                var dd = ('0' + d.getDate()).slice(-2);
+                return dd + "-" + mm + "-" + yy;
+                console.log("this is d" + d);
+            }
+
+            $(document).ready(function () {
+                $("#date").datepicker(
+                    {
+                        minDate: 0,
+                        dateFormat: "dd-mm-yy",
+                        beforeShowDay: function (date) {
+                            var st = $.datepicker.formatDate('dd-mm-yy', date);
+
+                            if (newArray.indexOf(st) != -1)
+                            {
+                                return [true];
+                            }
+                            else
+                            {
+                                return [false];
+                            }
+                        },
+                        onSelect: function (e) {
+                            fetch("/api/reservation/gettimes/" + e)
+                                .then(response => response.json())
+                                .then(
+                                    data => {
+                                        $("#time").empty();
+
+                                        for (time of data) {
+                                            var option = document.createElement("option");
+                                            option.text = time;
+                                            option.value = time;
+                                            var select = document.getElementById("time");
+                                            select.appendChild(option);
+                                        }
+                                    }
+                            )
+                        }
+                    });
+            });
+        </script>
+    }
+</div>

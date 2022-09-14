@@ -1,0 +1,42 @@
+﻿@model ReservationSystemProject.Data.Sitting;
+@{
+    ViewData["Title"] = "Delete Sitting";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2">Delete Sitting</h1>
+    <table class="table table-striped mt-3">
+        <thead class="table-header-color">
+            <tr>
+                <th class="text-light">Id</th>
+                <th class="text-light">Sitting</th>
+                <th class="text-light">Start</th>
+                <th class="text-light">End</th>
+                <th class="text-light">Capacity</th>
+                <th class="text-light">Private</th>
+                <th class="text-light">Closed</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>@Html.DisplayFor(s => s.Id)</td>
+                <td>@Html.DisplayFor(s => s.Name)</td>
+                <td>@Html.DisplayFor(s => s.Start)</td>
+                <td>@Html.DisplayFor(s => s.End)</td>
+                <td>@Html.DisplayFor(s => s.Capacity)</td>
+                <td>@Html.DisplayFor(s => s.IsPrivate)</td>
+                <td>@Html.DisplayFor(s => s.IsClosed)</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <form asp-action="Delete">
+        <div class="form-group col-12 d-flex justify-content-center">
+            <input type="submit" value="Delete" class="btn btn-danger me-1 col-2" />
+            <a asp-action="Index" class="btn btn-primary ms-1 col-2"> Back to List</a>
+            <input type="hidden" asp-for="Id" />
+        </div>
+    </form>
+</div>

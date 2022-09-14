@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservationSystemProject", "ReservationSystemProject\ReservationSystemProject.csproj", "{7E550B17-2190-4AC8-8D27-ECB1F95682C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E550B17-2190-4AC8-8D27-ECB1F95682C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E550B17-2190-4AC8-8D27-ECB1F95682C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E550B17-2190-4AC8-8D27-ECB1F95682C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E550B17-2190-4AC8-8D27-ECB1F95682C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33544456-0CFA-46A1-8D44-64A21AAA292D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/tafedipsgroupc
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ReservationSystemProject\\ReservationSystemProject.csproj
+		SccProjectName1 = ReservationSystemProject
+		SccLocalPath1 = ReservationSystemProject
+	EndGlobalSection
+EndGlobal

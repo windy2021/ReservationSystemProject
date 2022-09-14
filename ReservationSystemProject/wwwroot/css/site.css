@@ -1,0 +1,187 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/*Navbar*/
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.navbar-brand {
+    font-family: 'Norican', sans-serif;
+    font-size: 40px;
+}
+
+.navs:hover {
+    color: #ffb03b !important;
+    border-bottom: 1px solid #ffb03b;
+    padding-bottom: 4px;
+}
+
+.navs:focus {
+    color: #DF6F00 !important;
+    border-bottom: 1px solid #DF6F00;
+    padding-bottom: 4px;
+}
+
+a {
+    color: #DF6F00;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #F98812;
+    border-radius: 3px 4px;
+    border-color: #F98812;
+}
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #DF6F00;
+        border-radius: 3px 4px;
+        border-color: #DF6F00;
+    }
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #F98812;
+    border-color: #F98812;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+nav {
+    height: 8vh;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/*Body*/
+.content-container {
+    height: 85vh;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 7vh; /* Vertically center the text there */
+}
+
+/*Changing Bootstrap Colors*/
+.bg-light {
+    background-color: #faf2dd !important;
+}
+/*Navbar color*/
+.bg-dark {
+    background-color: #0F3341 !important;
+}
+.cursive {
+    font-family: 'Leckerli One', sans-serif;
+}
+
+
+/*Home Page*/
+.home-content {
+    background-image: url('../images/home-bg.jpg');
+    background-size: 100%;
+}
+
+/*Tables*/
+.table-container{
+    height: 70vh;
+}
+.table-header-color {
+    background-color: #284C5A;
+}
+td {
+    vertical-align: middle;
+}
+
+/*Making checkboxes bigger*/
+.big-checkbox {
+    width: 35px;
+    height: 35px;
+    margin-top: 0px;
+}
+
+/*Centering Login and Registration on the page*/
+.container-center{
+    position: relative;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.reg-center {
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.welcome {
+    font-family: 'norican', sans-serif;
+    color: #FFBA43;
+    font-weight: 100;
+    font-size: 9rem;
+    padding-top: 4rem;
+}
+    .welcome-text {
+        color: #FFBA43;
+        font-size: 2rem;
+    }
+
+.welcome-bg {
+    /*opacity of bg*/
+    background-color: rgb(15, 51, 65, 0.7);
+    /*background-color: rgb(0, 26, 40, 0.6);*/
+}
+
+.views{
+    margin-left: 15%;
+    margin-right: 15%;
+}

@@ -1,0 +1,54 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log In";
+}
+
+<div class="views">
+    <div class="content-container container-center">
+        <div class="center border rounded mt-3 col-5 h-50">
+            <div class="mx-5 mt-3">
+                <h1 class="text-center ps-3">Login To Account</h1>
+                <form id="account" method="post" class="row g-3">
+                    <div class="form-group col-12">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12 d-flex justify-content-between">
+                        <div class="checkbox">
+                            <label asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                        <p>
+                            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        </p>
+                    </div>
+
+                    <div class="form-group col-12 d-flex justify-content-center mt-1">
+                        <button type="submit" class="btn btn-primary col-5" id="Button_Login">Log in</button>
+                    </div>
+                    <div class="form-group col-12 d-flex justify-content-center">
+                        <p>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

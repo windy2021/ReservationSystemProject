@@ -1,0 +1,93 @@
+﻿@model ReservationSystemProject.Areas.Admin.Models.Sitting.Index
+@{
+    ViewData["Title"] = "Sittings and Areas";
+}
+
+<div class="views">
+    <div class="container mt-3 mb-2">
+        <div class="row justify-content-evenly">
+            <div class="col-8">
+                <div class="d-flex justify-content-between">
+                    <h1>Sittings</h1>
+                    <form method="post" class="align-self-center">
+                        <div class="btn-group">
+                            <select asp-for="Date" asp-items="Model.Dates" class="form-control">
+                                <option value="">Any Date</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </form>
+                    <a asp-action="Create" class="btn btn-primary col-3 align-self-center">Add Sitting</a>
+                </div>
+                <div class="overflow-auto table-container border rounded mt-3">
+                    <table class="table table-striped">
+                        <thead class="table-header-color">
+                            <tr>
+                                <th class="text-light">Date</th>
+                                <th class="text-light">Sitting</th>
+                                <th class="text-light">Start</th>
+                                <th class="text-light">End</th>
+                                <th class="text-light">Capacity</th>
+                                <th class="text-light">Private</th>
+                                <th class="text-light">Closed</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var s in Model.Sittings)
+                            {
+                                <tr>
+                                    <td>@s.Start.Date.ToString("d")</td>
+                                    <td>@Html.DisplayFor(m => s.Name)</td>
+                                    <td>@s.Start.ToString("hh:mm tt")</td>
+                                    <td>@s.End.ToString("hh:mm tt")</td>
+                                    <td>@Html.DisplayFor(m => s.Capacity)</td>
+                                    <td>@Html.DisplayFor(m => s.IsPrivate)</td>
+                                    <td>@Html.DisplayFor(m => s.IsClosed)</td>
+                                    <td class="pe-0">
+                                        <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-primary">Update</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex justify-content-between">
+                    <h1>Areas</h1>
+                    <a asp-action="CreateArea" class="btn btn-primary col-5 align-self-center">Add Area</a>
+                </div>
+                <div class="overflow-auto table-container border rounded mt-3">
+                    <table class="table table-striped">
+                        <thead class="table-header-color">
+                            <tr>
+                                <th class="text-light">Area</th>
+                                <th class="text-light"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var s in Model.Areas)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => s.Name)</td>
+                                    <td class="d-flex justify-content-center">
+                                        <a asp-action="ViewTables" asp-route-id="@s.Id" class="btn btn-primary me-2">View Tables</a>
+                                        <a asp-action="DeleteArea" asp-route-id="@s.Id" class="btn btn-danger ms-1">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

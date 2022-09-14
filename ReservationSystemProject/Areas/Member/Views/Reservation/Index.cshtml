@@ -1,0 +1,60 @@
+﻿@model ReservationSystemProject.Areas.Member.Models.Index
+@{
+    ViewData["Title"] = "Member Index";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2">Reservations</h1>
+
+    <div>
+        <form method="post">
+            <div class="btn-group">
+                <select asp-for="Type" asp-items="@(new SelectList(Model.FilterType, "Type"))" class="form-control">
+                    <option value="">View Reservation</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">View</button>
+        </form>
+    </div>
+
+    <div class="overflow-auto table-container border rounded mt-3">
+        <table class="table table-striped">
+            <thead class="table-header-color">
+                <tr>
+                    <th class="text-light">Start</th>
+                    <th class="text-light">End</th>
+                    <th class="text-light">Guests</th>
+                    <th class="text-light">Duration</th>
+                    <th class="text-light">Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.Reservations == null || Model.Reservations.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="5" class="d-flex justify-content-between" width="100%">
+                                Looks like you don't have any upcoming reservations
+                                <a text-dark asp-area="" asp-controller="Reservation" asp-action="Create" class="btn btn-primary">Book Now!</a>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var r in Model.Reservations)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => r.Start)</td>
+                                <td>@Html.DisplayFor(m => r.End)</td>
+                                <td>@Html.DisplayFor(m => r.Guests)</td>
+                                <td>@Html.DisplayFor(m => r.Duration)</td>
+                                <td>@Html.DisplayFor(m => r.Note)</td>
+                            </tr>
+                        }
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

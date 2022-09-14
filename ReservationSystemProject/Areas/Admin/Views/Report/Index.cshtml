@@ -1,0 +1,42 @@
+﻿@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2 text-center">Reservation Data</h1>
+
+    <div class="row justify-content-around">
+        <div class="col-23">
+            <canvas id="reservationChart"></canvas>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <script>
+        let reservationChart = document.getElementById('reservationChart').getContext('2d');
+        var months = @Html.Raw(JsonConvert.SerializeObject(ViewData["Months"]));
+        var count = @Html.Raw(JsonConvert.SerializeObject(ViewData["Count"]));
+
+        console.log(months);
+        console.log(count);
+
+        let lineChart = new Chart(reservationChart, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Months',
+                    data: count,
+                    backgroundColor: [
+                        'rgba(251, 135, 16, 0.7)',
+                    ],
+                }]
+            },
+        });
+    </script>
+}

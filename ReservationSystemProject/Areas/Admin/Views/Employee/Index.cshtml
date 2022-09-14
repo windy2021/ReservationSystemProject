@@ -1,0 +1,55 @@
+﻿@model ReservationSystemProject.Areas.Admin.Models.Employee.Index
+@{
+    ViewData["Title"] = "Employee Index";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2 ">Employee</h1>
+
+    <form method="post">
+    </form>
+
+    <div class="overflow-auto table-container border rounded mt-3">
+        <table class="table table-striped">
+            <thead class="table-header-color">
+                <tr>
+                    <th class="text-light">Name</th>
+                    <th class="text-light">Mobile Number</th>
+                    <th class="text-light">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.People == null || Model.People.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="5">
+                                There are currently no registered account, click here to register
+                                <a id="regis" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var p in Model.People)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => p.FullName)</td>
+                                <td>@Html.DisplayFor(m => p.MobileNumber)</td>
+                                <td>@Html.DisplayFor(m => p.Email)</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-primary col-3 align-self-center me-1">Details</a>
+                                    <a asp-action="UpdateFromIndex" asp-route-id="@p.Id" class="btn btn-primary col-3 align-self-center me-1">Update</a>
+                                    <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-primary col-3 align-self-center me-1">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+ 

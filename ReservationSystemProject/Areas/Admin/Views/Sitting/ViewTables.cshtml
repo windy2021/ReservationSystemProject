@@ -1,0 +1,36 @@
+﻿@model ReservationSystemProject.Areas.Admin.Models.Sitting.ViewTables
+@{
+    ViewData["Title"] = "Tables";
+}
+<div class="views">
+    <div class="d-flex justify-content-between mt-3 mb-2">
+        <h1>Tables</h1>
+        <a asp-action="CreateTable" asp-route-id="@ViewBag.AreaId" class="btn btn-primary col-2 align-self-center">Add Table</a>
+    </div>
+
+    <div class="overflow-auto table-container border rounded mt-3">
+        <table class="table table-striped">
+            <thead class="table-header-color">
+                <tr>
+                    <th class="text-light">Id</th>
+                    <th class="text-light">Table</th>
+                    <th class="text-light" th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.Tables)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => s.Id)</td>
+                        <td>@Html.DisplayFor(m => s.Name)</td>
+                        <td>
+                            <a asp-action="DeleteTable" asp-route-id="@s.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

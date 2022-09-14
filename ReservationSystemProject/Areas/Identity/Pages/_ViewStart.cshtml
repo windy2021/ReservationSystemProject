@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{if (!SignInManager.IsSignedIn(User) || User.IsInRole("Member"))
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+}
+@{if (User.IsInRole("Manager") || User.IsInRole("Staff"))
+    {
+        Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+}

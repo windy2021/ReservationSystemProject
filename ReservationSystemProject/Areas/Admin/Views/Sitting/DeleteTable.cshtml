@@ -1,0 +1,32 @@
+﻿@model ReservationSystemProject.Data.Table;
+@{ 
+    ViewData["Title"] = "Delete Table";
+}
+
+<div class="views">
+    <h1 class="mt-3 mb-2">Delete Table</h1>
+    <table class="table table-striped mt-3">
+        <thead class="table-header-color">
+            <tr>
+                <th class="text-light">Id</th>
+                <th class="text-light">Table</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(t => t.Id)</td>
+                <td>@Html.DisplayFor(t => t.Name)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form asp-action="DeleteTable">
+        <div class="form-group col-12 d-flex justify-content-center">
+            <input type="submit" value="Delete" class="btn btn-danger me-1 col-2" />
+            <a asp-action="Index" class="btn btn-primary ms-1 col-2"> Back to List</a>
+            <input type="hidden" asp-for="Id" />
+        </div>
+    </form>
+
+
+</div>
